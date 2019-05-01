@@ -1,4 +1,4 @@
-/*
+
 package eitherxample
 
 sealed trait DomainFailure
@@ -7,22 +7,14 @@ case class AggregationFailure(cobDate : String, reportingSetId : Int) extends  D
 case object DeallocationFailure extends DomainFailure
 case class Input(cobDate :String, reportingSetId: Int, value : Double)
 
-
 class RecoverWithEither {
 
-  def deAllocationProcess = {
-   val values =  for {
-      le <- tsAggregationProcess
-      tup <- le.right
+  def deAllocationProcess() {
 
-    } yield tup._2
 
-    DeAllocation.process(values)
   }
 
-  def tsAggregationProcess = {
-    val inputs = List(Input("31122018", 4, 124.24),
-      Input("31122018",2, 120.20), Input("31122018",1, 56.35))
+  def tsAggregationProcess(inputs: List[Input]) = {
 
     TSAggregation.process(inputs)
   }
@@ -35,4 +27,4 @@ object RecoverWithEither  {
     d.deAllocationProcess
   }
 }
-*/
+

@@ -17,4 +17,21 @@ class MonadTransformerSpec extends FlatSpec with Matchers {
 
     mt.compose(result1, result2) should be(OptionT(List(Option(42))))
   }
+
+  it should "add three numbers in string format" in {
+    val mt = new MonadTransformer
+    val res = mt.addAll("2", "3", "4")
+    res.value should be(Some(9))
+    res.written should be(List("read 2", "read 3", "read 4"))
+  }
+
+  it should "fail if a string cannot be parse as number" in {
+    val mt = new MonadTransformer
+    val res = mt.addAll("2", "b", "4")
+
+    res.value should be(None)
+    res.written should be(List("read 2", "failed to parse b"))
+  }
+
+
 }

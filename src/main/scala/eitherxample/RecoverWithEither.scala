@@ -9,14 +9,16 @@ case class Input(cobDate :String, reportingSetId: Int, value : Double)
 
 class RecoverWithEither {
 
-  def deAllocationProcess() {
-
-
-  }
+  def deAllocationProcess() {}
 
   def tsAggregationProcess(inputs: List[Input]) = {
 
     TSAggregation.process(inputs)
+  }
+
+  def tsAggregationProcess2(inputs: List[Input]) = {
+
+    //TSAggregation.process2(inputs)
   }
 
 }

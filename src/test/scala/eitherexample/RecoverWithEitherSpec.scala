@@ -6,7 +6,7 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class RecoverWithEitherSpec extends FlatSpec with Matchers {
 
-  it should "return the list of reporting set values wrapped in Right of cobdate is not 28092018" in {
+  "RecoverWithEither" should "return the list of reporting set values wrapped in Right if cobdate is not 28092018" in {
 
     val re = new RecoverWithEither()
     val inputs = List(Input("31122018", 4, 124.24),
@@ -41,9 +41,24 @@ class RecoverWithEitherSpec extends FlatSpec with Matchers {
     val errorMessage: Seq[String] = errors.collect { case Left(err) => err }
     val rightVal: Seq[Double] = resVal.collect { case Right(value) => value }
 
-    errorMessage.size should be(1)
+    errorMessage should have size 1
+
     errorMessage(0) should startWith("Wrong cobdate")
 
-    rightVal.size should be(2)
+    rightVal should have size 2
   }
+  /*
+    it should "return the Error wrapped in Left if one of the cobdate is 28092018" in {
+
+      val re = new RecoverWithEither()
+      val inputs = List(Input("31122018", 4, 124.24),
+        Input("31122018", 2, 120.20), Input("28092018", 1, 56.35))
+
+      val res = re.tsAggregationProcess2(inputs)
+      val (errs, results) = res.run
+
+      errs.foreach(println)
+      results.foreach(println)
+    }
+    */
 }

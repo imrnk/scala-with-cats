@@ -1,12 +1,29 @@
 package eitherxample
 
+import cats.data.{Writer}
 import cats.syntax.either._
+
 
 class Result(cobDate: String, df: List[String])
 
-
 object TSAggregation {
 
+  type ResultLog[A] = Writer[Vector[String], A]
+
+  /*def process2(inputs : List[Input]): ResultLog[Option[Double]]  = {
+    import cats.syntax.writer._ // for tell
+    import cats.syntax.applicative._
+
+     inputs.foldLeft(Writer(Vector(""), None)) {
+       (z, ins) => {
+         if(ins.cobDate == "28092018") {
+           Writer(Vector(s"wrong cobdate ${ins.cobDate} for ${ins.reportingSetId}"), None)
+         } else {
+           z.value.flatMap((zz:Double) => Option(zz+ins.value)).pure[ResultLog]
+         }
+       }
+     }
+  }*/
 
   def process(inputs: List[Input]): Seq[Either[String, Double]] = {
 

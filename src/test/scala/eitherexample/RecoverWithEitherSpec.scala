@@ -47,8 +47,8 @@ class RecoverWithEitherSpec extends FlatSpec with Matchers {
 
     rightVal should have size 2
   }
-  /*
-    it should "return the Error wrapped in Left if one of the cobdate is 28092018" in {
+
+  /*it should "return the Error wrapped in Left if one of the cobdate is 28092018" in {
 
       val re = new RecoverWithEither()
       val inputs = List(Input("31122018", 4, 124.24),
@@ -59,6 +59,5 @@ class RecoverWithEitherSpec extends FlatSpec with Matchers {
 
       errs.foreach(println)
       results.foreach(println)
-    }
-    */
+  }*/
 }

@@ -11,7 +11,6 @@ object TSAggregation {
   type ResultLog[A] = Writer[Vector[String], A]
 
   /*def process2(inputs : List[Input]): ResultLog[Option[Double]]  = {
-    import cats.syntax.writer._ // for tell
     import cats.syntax.applicative._
 
      inputs.foldLeft(Writer(Vector(""), None)) {

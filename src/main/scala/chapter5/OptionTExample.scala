@@ -24,7 +24,7 @@ class OptionTExample {
     val ot: OptionT[Future, String] = for {
       g <- OptionT(greetingFO)
       f <- OptionT.liftF(firstnameF) // Option[A] and/or F[A] and want to lift them into an OptionT[F, A]
-      l <- OptionT.fromOption[Future](lastnameO) //Froom Option[String] to Future[Option[String]]
+      l <- OptionT.fromOption[Future](lastnameO) //From Option[String] to Future[Option[String]]
     } yield s"$g $f $l"
     ot.value
   }

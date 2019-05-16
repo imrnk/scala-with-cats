@@ -21,4 +21,10 @@ class SemigroupalExampleSpec extends FlatSpec with Matchers {
   it should "produce a semigroupal using tupled syntax" in {
     (Option(123), Option("abc")).tupled should be(Option((123, "abc")))
   }
+
+  it should "map the three option values using passed function" in {
+    Semigroupal.map3(Option(1), Option(2), Option(3))(_ + _ + _) should be(Option(6))
+  }
+
+
 }
